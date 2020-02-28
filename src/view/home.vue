@@ -1,12 +1,13 @@
 <template>
   <div class="home main">
     <div class="videoPlay">
-      <video id="video"
-             class="video video-js vjs-default-skin"
-             controls
-             preload="auto"
-             :poster="posterImg">
-      </video>
+      <video-player
+        class="video-player vjs-custom-skin"
+        ref="videoPlayer"
+        :playsinline="true"
+        :options="playerOptions"
+      >
+      </video-player>
     </div>
   </div>
 </template>
@@ -21,21 +22,43 @@ const options = {
   autoplay: true,
 }
 import {mapState} from 'vuex'
-import videojs from 'video.js'
-import 'videojs-contrib-hls'
+
+import {videoPlayer} from 'vue-video-player'
+import 'videojs-contrib-hls/dist/videojs-contrib-hls'
 import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+
 export default {
   name: "home",
   inject: ['reload'],
+  components:{videoPlayer},
   computed: {
     ...mapState({
       showLoader: state => state.vux.showLoader,
-    })
+    }),
+    player(){
+      return this.$refs.videoPlayer.player;
+    }
   },
   data(){
     return{
       // 视频第一帧
-      posterImg:''
+      posterImg:'',
+      playerOptions:{
+        autoplay:true,
+        muted:true,
+        loop:false,
+        preload:'auto',
+        language:'zh-CN',
+        aspectRatio:'16:9',
+        fluid:true,
+        sources: {
+          type:'application/x-mpegURL',
+          src:'http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8'
+        },
+        width:document.documentElement.clientWidth,
+        notSupportedMessage:'此视频暂无法播放，请稍后再试'
+      }
     }
   },
   created() {
@@ -44,18 +67,6 @@ export default {
   updated() {
   },
   mounted() {
-    let vue = this;
-    // 动态ID
-    let videoID='video'
-    // 动态URI
-    let videoURL='http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8'
-    vue.$nextTick(() => {
-      vue.player = videojs(videoID, options, () => {
-        vue.player.src({
-          src: videoURL
-        })
-      })
-    })
   },
 }
 </script>
