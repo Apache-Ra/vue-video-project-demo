@@ -16,10 +16,8 @@
     "less-loader": "^4.1.0",
     "lodash": "^4.17.11",
     "uuid": "^3.3.2",
-    "video.js": "^7.6.5",
-    "videojs-contrib-hls": "^5.15.0",
-    "vue-video-player": "^4.0.6",
     "vue": "^2.5.2",
+    "vue-video-player": "^5.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
