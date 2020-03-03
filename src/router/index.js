@@ -27,34 +27,9 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'login',
+      name: 'home',
       component: resolve => require.ensure([], () => resolve(require('@/view/home')), 'home'),
-      meta: {title: 'rtmp 测试流码', requireAuth: false}
-    },{
-      path: '/rtmp_1',
-      name: 'rtmp_1',
-      component: resolve => require.ensure([], () => resolve(require('@/view/rtmp_1')), 'home'),
-      meta: {title: 'rtmp_1', requireAuth: false}
-    },{
-      path: '/rtmp_2',
-      name: 'rtmp_2',
-      component: resolve => require.ensure([], () => resolve(require('@/view/rtmp_2')), 'home'),
-      meta: {title: '10.4.1.1 通道2', requireAuth: false}
-    },{
-      path: '/rtmp_3',
-      name: 'rtmp_3',
-      component: resolve => require.ensure([], () => resolve(require('@/view/rtmp_3')), 'home'),
-      meta: {title: '10.4.1.21 通道10', requireAuth: false}
-    },{
-      path: '/rtmp_4',
-      name: 'rtmp_4',
-      component: resolve => require.ensure([], () => resolve(require('@/view/rtmp_4')), 'home'),
-      meta: {title: '10.4.10.1 通道2', requireAuth: false}
-    },{
-      path: '/rtmp_5',
-      name: 'rtmp_5',
-      component: resolve => require.ensure([], () => resolve(require('@/view/rtmp_5')), 'home'),
-      meta: {title: '10.4.10.21 通道4', requireAuth: false}
+      meta: {title: '直播流在线测试', requireAuth: false}
     }
   ]
 })

@@ -10,13 +10,10 @@ let DOMAIN_NAME = ''
 let SERVER_NAME = ''
 let API_PREFIX = ''
 import VueVideoPlayer from 'vue-video-player'
-
-import 'video.js/dist/video-js.css' // 引入样式
-
-import 'vue-video-player/src/custom-theme.css' // 引入样式
-
+import 'videojs-contrib-hls'
+import 'video.js/dist/video-js.css'             // 引入样式
+import 'vue-video-player/src/custom-theme.css'  // 引入样式
 import 'videojs-flash'
-
 Vue.use(VueVideoPlayer)
 /**
  * 开发环境和发布环境变量
